@@ -3,12 +3,11 @@ const musica = document.getElementById("musica");
 
 function iniciarMusica() {
     musica.play().catch(() => {});
-    document.removeEventListener("click", iniciarMusica);
-    document.removeEventListener("touchstart", iniciarMusica);
 }
 
-document.addEventListener("click", iniciarMusica);
-document.addEventListener("touchstart", iniciarMusica);
+document.addEventListener("click", iniciarMusica, { once: true });
+document.addEventListener("touchstart", iniciarMusica, { once: true, passive: true });
+
 
 // Corações caindo
 const heartsContainer = document.querySelector(".hearts");
