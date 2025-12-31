@@ -1,39 +1,44 @@
-const heartsContainer = document.querySelector('.hearts');
+// Música no primeiro toque
+const musica = document.getElementById("musica");
 
-function createHeart() {
-    const heart = document.createElement('div');
-    heart.classList.add('heart');
-    heart.innerHTML = '🧡';
+function iniciarMusica() {
+    musica.play().catch(() => {});
+    document.removeEventListener("click", iniciarMusica);
+    document.removeEventListener("touchstart", iniciarMusica);
+}
 
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+document.addEventListener("click", iniciarMusica);
+document.addEventListener("touchstart", iniciarMusica);
 
-    const duration = Math.random() * 3 + 4; // 4s a 7s
-    heart.style.animationDuration = duration + 's';
+// Corações caindo
+const heartsContainer = document.querySelector(".hearts");
+
+function criarCoracao() {
+    const heart = document.createElement("div");
+    heart.innerHTML = "🧡";
+    heart.style.position = "absolute";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = "-10px";
+    heart.style.fontSize = Math.random() * 20 + 20 + "px";
+    heart.style.opacity = Math.random();
+    heart.style.filter = "drop-shadow(0 0 10px orange)";
+    heart.style.animation = "fall 5s linear";
 
     heartsContainer.appendChild(heart);
 
     setTimeout(() => {
         heart.remove();
-    }, duration * 1000);
+    }, 5000);
 }
 
-setInterval(createHeart, 150);
+setInterval(criarCoracao, 300);
 
-const music = document.getElementById('bg-music');
-music.volume = 0.4;
-
-let musicStarted = false;
-
-function startMusic() {
-    if (!musicStarted) {
-        music.play();
-        musicStarted = true;
-
-        document.removeEventListener('click', startMusic);
-        document.removeEventListener('touchstart', startMusic);
+// Animação
+const style = document.createElement("style");
+style.innerHTML = `
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
     }
-}
-
-document.addEventListener('click', startMusic);
-document.addEventListener('touchstart', startMusic);
+}`;
+document.head.appendChild(style);
