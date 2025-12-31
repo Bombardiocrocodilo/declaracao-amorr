@@ -1,98 +1,95 @@
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Fundo preto */
 body {
     background-color: black;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-}
-
-/* Container dos corações */
-.hearts {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-/* Coração */
-.heart {
-    position: absolute;
-    color: #ff9f1c;
-    text-shadow:
-        0 0 5px #ff9f1c,
-        0 0 10px #ff9f1c,
-        0 0 20px #ff7a00;
-    animation-name: fall;
-    animation-timing-function: linear;
-}
-
-/* Animação de queda */
-@keyframes fall {
-    0% {
-        transform: translateY(-10vh);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(110vh);
-        opacity: 0;
-    }
-}
-.declaracao {
-    position: relative;
-    z-index: 2;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    overflow-x: hidden;
     color: white;
 }
 
-/* Texto */
-.declaracao .texto h1 {
+/* Corações */
+.hearts {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Conteúdo */
+.container {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.declaracao {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.texto h1 {
     color: #ff9f1c;
     margin-bottom: 15px;
-    font-size: 2em;
+    text-align: center;
 }
 
-.declaracao .texto p {
-    font-size: 1.1em;
+.texto p {
     line-height: 1.6;
+    margin-bottom: 12px;
+    font-size: 1rem;
 }
 
-/* Imagem */
-.declaracao .imagem img {
+.imagem img {
     width: 100%;
-    max-width: 320px;
     border-radius: 20px;
-    box-shadow: 0 0 20px #ff9f1c;
-    display: block;
-    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(255, 159, 28, 0.8);
 }
 
-/* 💻 Layout para telas maiores */
+/* Músicas */
+.musicas {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.musicas h2 {
+    color: #ff9f1c;
+    margin-bottom: 30px;
+}
+
+.lista-musicas {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.musica {
+    border: 1px solid #ff9f1c;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: rgba(255, 159, 28, 0.1);
+    box-shadow: 0 0 15px rgba(255, 159, 28, 0.5);
+}
+
+/* PC */
 @media (min-width: 768px) {
     .declaracao {
         flex-direction: row;
         align-items: center;
-        justify-content: center;
-        max-width: 1000px;
+    }
+
+    .texto, .imagem {
+        width: 50%;
+    }
+
+    .lista-musicas {
+        grid-template-columns: 1fr 1fr;
+        max-width: 900px;
         margin: auto;
-    }
-
-    .declaracao .texto,
-    .declaracao .imagem {
-        flex: 1;
-    }
-
-    .declaracao .texto {
-        padding-right: 30px;
     }
 }
