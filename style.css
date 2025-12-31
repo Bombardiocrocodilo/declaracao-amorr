@@ -93,3 +93,22 @@ body {
         margin: auto;
     }
 }
+/* Poema */
+.poema {
+    margin-top: 60px;
+    text-align: center;
+    padding: 20px;
+}
+
+.poema h2 {
+    color: #ff9f1c;
+    margin-bottom: 25px;
+    font-size: 2em;
+}
+
+.poema p {
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
