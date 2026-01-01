@@ -109,6 +109,8 @@ body {
 .poema p {
     max-width: 700px;
     margin: auto;
+    text-align: center;
     line-height: 1.8;
     font-size: 1.05rem;
 }
+
